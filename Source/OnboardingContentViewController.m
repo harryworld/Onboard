@@ -262,7 +262,7 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
     }
     
     // create and configure the main text label sitting underneath the icon with the provided padding
-    _mainTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_imageView.frame) + self.underIconPadding, contentWidth, 0)];
+    _mainTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.underIconPadding, contentWidth, 0)];
     _mainTextLabel.accessibilityIdentifier = kOnboardMainTextAccessibilityIdentifier;
     _mainTextLabel.text = _titleText;
     _mainTextLabel.textColor = self.titleTextColor;
