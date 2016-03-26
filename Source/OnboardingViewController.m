@@ -148,8 +148,9 @@ static NSString * const kSkipButtonText = @"Skip";
     // create the background image view and set it to aspect fill so it isn't skewed
     if (self.backgroundImage) {
         backgroundImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+        backgroundImageView.contentMode = UIViewContentModeCenter;
         [backgroundImageView setImage:self.backgroundImage];
+        self.view.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:backgroundImageView];
     }
     
