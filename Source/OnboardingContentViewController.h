@@ -48,6 +48,8 @@ typedef void (^action_callback)(OnboardingViewController *onboardController);
 
 @property (nonatomic, strong) NSString *buttonFontName;
 @property (nonatomic) CGFloat buttonFontSize;
+@property (nonatomic) CGFloat buttonHeight;
+@property (nonatomic) Boolean buttonHasBorder;
 
 @property (nonatomic) CGFloat topPadding;
 @property (nonatomic) CGFloat underIconPadding;

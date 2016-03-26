@@ -14,7 +14,7 @@ static NSString * const kDefaultOnboardingFont = @"Helvetica-Light";
 
 #define DEFAULT_TEXT_COLOR [UIColor whiteColor];
 
-static CGFloat const kContentWidthMultiplier = 0.9;
+static CGFloat const kContentWidthMultiplier = 0.7;
 static CGFloat const kDefaultImageViewSize = 100;
 static CGFloat const kDefaultTopPadding = 60;
 static CGFloat const kDefaultUnderIconPadding = 30;
@@ -120,6 +120,8 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
     // default button properties
     self.buttonFontName = kDefaultOnboardingFont;
     self.buttonFontSize = kDefaultButtonFontSize;
+    self.buttonHeight = kActionButtonHeight;
+    self.buttonHasBorder = NO;
     
     // default padding values
     self.topPadding = kDefaultTopPadding;
@@ -285,12 +287,18 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
     
     // create the action button if we were given button text
     if (_buttonText) {
-        _actionButton = [[UIButton alloc] initWithFrame:CGRectMake((CGRectGetMaxX(self.view.frame) / 2) - (contentWidth / 2), CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kMainPageControlHeight - kActionButtonHeight - self.bottomPadding, contentWidth, kActionButtonHeight)];
+        _actionButton = [[UIButton alloc] initWithFrame:CGRectMake((CGRectGetMaxX(self.view.frame) / 2) - (contentWidth / 2), CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kMainPageControlHeight - kActionButtonHeight - self.bottomPadding, contentWidth, _buttonHeight)];
         _actionButton.accessibilityIdentifier = kOnboardActionButtonAccessibilityIdentifier;
         _actionButton.titleLabel.font = [UIFont fontWithName:self.buttonFontName size:self.buttonFontSize];
         [_actionButton setTitle:_buttonText forState:UIControlStateNormal];
         [_actionButton setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
         [_actionButton addTarget:self action:@selector(handleButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        if (_buttonHasBorder) {
+            _actionButton.layer.cornerRadius = 5;
+            _actionButton.layer.borderColor = [[UIColor orangeColor] CGColor];
+            _actionButton.layer.borderWidth = 2;
+        }
+        
         [self.view addSubview:_actionButton];
     }
 }
