@@ -25,6 +25,7 @@ static CGFloat const kDefaultTitleFontSize = 38;
 static CGFloat const kDefaultBodyFontSize = 28;
 static CGFloat const kDefaultButtonFontSize = 24;
 
+static CGFloat const kActionButtonTag = 100;
 static CGFloat const kActionButtonHeight = 50;
 static CGFloat const kMainPageControlHeight = 35;
 
@@ -288,6 +289,7 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
     // create the action button if we were given button text
     if (_buttonText) {
         _actionButton = [[UIButton alloc] initWithFrame:CGRectMake((CGRectGetMaxX(self.view.frame) / 2) - (contentWidth / 2), CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kMainPageControlHeight - kActionButtonHeight - self.bottomPadding, contentWidth, _buttonHeight)];
+        _actionButton.tag = kActionButtonTag;
         _actionButton.accessibilityIdentifier = kOnboardActionButtonAccessibilityIdentifier;
         _actionButton.titleLabel.font = [UIFont fontWithName:self.buttonFontName size:self.buttonFontSize];
         [_actionButton setTitle:_buttonText forState:UIControlStateNormal];
